@@ -6,6 +6,9 @@ import json
 from llama_parse import LlamaParse
 import gradio as gr
 
+# Retrieve the API key from environment variables
+api_key = os.getenv("apikey")
+
 nest_asyncio.apply()
 css = """ 
 
@@ -162,7 +165,7 @@ def extract_field(content, field_name):
 
 # Set up parser with the API key
 parser = LlamaParse(
-    api_key="llx-pJMt7P9jF5Fla7fbABz9JEltR9YrOVXVHFF7RyOgkjYyR4qp",
+    api_key=api_key,
     accurate_mode=True,
     result_type="markdown",
     parsing_instruction=parsing_instruction,
