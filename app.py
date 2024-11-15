@@ -10,15 +10,15 @@ import gradio as gr
 api_key = os.getenv("apikey")
 
 nest_asyncio.apply()
+
+# If theres any css code you would like to add or design further. 
 css = """ 
 
 
 
  """
 
-# Load the environment variables
-# load_dotenv('/Users/carolraydan/Desktop/API.env')
-# api_key = os.getenv('LLAMA_CLOUD_API_KEY')
+
 
 # Define parsing instruction (you can keep this as is)
 parsing_instruction = """Now first:
@@ -235,9 +235,9 @@ iface = gr.Interface(
         gr.Textbox(label="Fathers Name", interactive=True),
         gr.Textbox(label="Last Name", interactive=True),
         gr.Textbox(label="Nationality", interactive=True),
-        gr.Textbox(label="Education", interactive=True, placeholder="List each entry on a new line"),  # Allow multiple entries
-        gr.Textbox(label="Experience", interactive=True, placeholder="List each entry on a new line"),  # Allow multiple entries
-        gr.Textbox(label="Certification", interactive=True),
+        gr.Textbox(label="Education", interactive=True),  
+        gr.Textbox(label="Experience", interactive=True),  
+        gr.Textbox(label="Certification", interactive=True ),
     ],
     title="CV Parser",
     description="Upload a CV document, and it will be parsed to extract relevant information.",
