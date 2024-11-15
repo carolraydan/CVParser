@@ -176,19 +176,16 @@ parser = LlamaParse(
 )
 
 
-def parse_cv(profile_picture,file):
-    # Load and parse the document
-    parsed_output = parser.load_data(file.name)  # Load the uploaded file
+def parse_cv(profile_picture, file):
+    # Ignore profile_picture for now
+    parsed_output = parser.load_data(file.name)
+    content = getattr(parsed_output[0], 'text', None)
     
-    # Try to retrieve JSON-like data from the document
-    content = getattr(parsed_output[0], 'text', None)  # or 'content' if 'text' doesn't work
-    
-    # Parse the JSON data if available
-    if content:
-        parsed_data = json.loads(content)  # Convert the JSON-like string to a dictionary
-    else:
-        return "Error: Could not retrieve content from Document object"
+    if not content:
+        return "Error: Could not retrieve content from the document object."
 
+    parsed_data = json.loads(content)
+    
     # Map parsed data to Gradio output format
     result = {
         "Full Name": parsed_data.get("Full Name", "Not Found"),
@@ -208,7 +205,6 @@ def parse_cv(profile_picture,file):
              f"Date: {exp.get('Date', 'N/A')}" for exp in parsed_data.get("Experience", [])]
         ),
         "Certification": "\n".join(parsed_data.get("Certifications", ["Not Found"])),
-        )
     }
 
     return (
@@ -217,32 +213,32 @@ def parse_cv(profile_picture,file):
         result["Fathers Name"],
         result["Last Name"],
         result["Nationality"],
-        result["Education"] if result["Education"] else "Not Found",
-        result["Experience"] if result["Experience"] else "Not Found",
-        result["Certification"] if result["Certification"] else "Not Found",
+        result["Education"],
+        result["Experience"],
+        result["Certification"],
     )
 
-
-# Set up the Gradio interface with editable textboxes
+# Set up the Gradio interface
 iface = gr.Interface(
     fn=parse_cv,
     inputs=[
-        gr.Image(label="Upload Profile Picture (optional ", type="filepath"),  # Placeholder for profile picture
+        gr.Image(label="Upload Profile Picture (optional)", type="filepath"),  # Placeholder for profile picture
         gr.File(label="Upload CV (PDF, DOCX, PPTX)")
     ],
-    
     outputs=[
         gr.Textbox(label="Full Name", interactive=True),
         gr.Textbox(label="First Name", interactive=True),
-        gr.Textbox(label="Fathers Name",interactive=True),
+        gr.Textbox(label="Fathers Name", interactive=True),
         gr.Textbox(label="Last Name", interactive=True),
         gr.Textbox(label="Nationality", interactive=True),
-        gr.Textbox(label="Education", interactive=True, placeholder="List each entry on a new line"),  # Allow multiple entries
-        gr.Textbox(label="Experience", interactive=True, placeholder="List each entry on a new line"),  # Allow multiple entries
-        gr.Textbox(label="Certification", interactive=True, placeholder="List each entry on a new line"))
+        gr.Textbox(label="Education", interactive=True, placeholder="List each entry on a new line"),
+        gr.Textbox(label="Experience", interactive=True, placeholder="List each entry on a new line"),
+        gr.Textbox(label="Certification", interactive=True),
     ],
     title="CV Parser",
-    description="Upload a CV document, and it will be parsed to extract relevant information.",flagging_mode="never", css=css
+    description="Upload a profile picture (optional) and a CV document to extract relevant information.",
+    flagging_mode="never",
+    css=css
 )
 
 # Launch the Gradio app
