@@ -22,7 +22,7 @@ css = """
 
 # Define parsing instruction (you can keep this as is)
 parsing_instruction = """Now first:
-• Read and understand the content of the arabic CV thoroughly.
+• Read and understand the content of the CV thoroughly.
 • Please follow this prompt without making any assumptions. 
 • Identify relevant sections by Analyzing the context of the words before or after each section.
 
@@ -171,9 +171,7 @@ parser = LlamaParse(
     parsing_instruction=parsing_instruction,
     num_workers=4,
     verbose=True,
-    disable_ocr=True,
-    language = 'ar'
-    
+    disable_ocr=True
 )
 
 def parse_cv(profile_picture, file):
