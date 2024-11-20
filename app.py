@@ -172,7 +172,7 @@ parser = LlamaParse(
     num_workers=4,
     verbose=True,
     disable_ocr=True,
-    language = ['ar', 'en']
+    language = ar
     
 )
 
