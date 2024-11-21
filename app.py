@@ -22,15 +22,15 @@ css = """
 
 # Define parsing instruction (you can keep this as is)
 parsing_instruction = """Now first:
-• Read and understand the content of the CV thoroughly.
+• Read and understand the content of the CV thoroughly, and identify what language is the cv in , either fully in arabic or fully in english.
 • Please follow this prompt without making any assumptions. 
 • Identify relevant sections by Analyzing the context of the words before or after each section.
 
-Fields to extract and format:
+Fields to extract and format even if the language in the document is classified as arabic:
 
 For each field, ensure that the extracted information follows this structure:
 
- - Full Name: [Extracted Full Name]
+ - Full Name: [Extracted Full Name ]
  - First Name: [Extracted First Name]
  - Fathers Name: [Extracted Fathers (Middle) Name]
  - Last Name: [Extracted Last Name]
