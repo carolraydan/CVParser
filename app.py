@@ -166,13 +166,13 @@ def extract_field(content, field_name):
 # Set up parser with the API key
 parser = LlamaParse(
     api_key=api_key,
-    accurate_mode=True,
+    premium_mode=True,
     result_type="markdown",
     parsing_instruction=parsing_instruction,
     num_workers=4,
     verbose=True,
     disable_ocr=True,
-    language='ar'
+    language=['ar','en']
 )
 
 def parse_cv(profile_picture, file):
