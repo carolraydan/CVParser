@@ -171,7 +171,8 @@ parser = LlamaParse(
     parsing_instruction=parsing_instruction,
     num_workers=4,
     verbose=True,
-    disable_ocr=True
+    disable_ocr=True,
+    language='ar'
 )
 
 def parse_cv(profile_picture, file):
