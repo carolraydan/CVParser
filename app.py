@@ -22,7 +22,7 @@ css = """
 
 # Define parsing instruction (you can keep this as is)
 parsing_instruction = """Now first:
-• Read and understand the content of the CV thoroughly, and identify what language is the cv in , either fully in arabic or fully in english.
+• Read and understand the content of the CV thoroughly.
 • Please follow this prompt without making any assumptions. 
 • Identify relevant sections by Analyzing the context of the words before or after each section.
 
