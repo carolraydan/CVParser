@@ -1,14 +1,4 @@
----
-title: CVparser
-emoji: 🐢
-colorFrom: purple
-colorTo: blue
-sdk: gradio
-sdk_version: 5.5.0
-app_file: app.py
-pinned: false
-license: apache-2.0
-short_description: CV parser
----
+# CV Parser
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+## This project is using an external API called LLamaparse which is an extension of a pretrained language model, further trained using my prompt engineering, to 
+yield the results needed, within a JSON format. 
