@@ -165,7 +165,7 @@ def extract_field(content, field_name):
 
 # Set up parser with the API key
 parser = LlamaParse(
-    api_key=api_key,
+    api_key="llx-AgWzh0Ow8RZiVBe1HsXML8tOyO93iZ6IFowVFut7J0qVlwrw",
     premium_mode=True,
     result_type="markdown",
     parsing_instruction=parsing_instruction,
@@ -176,6 +176,7 @@ parser = LlamaParse(
 )
 
 def parse_cv(profile_picture, file):
+    
     # Load and parse the document
     parsed_output = parser.load_data(file.name)  # Load the uploaded file
     
@@ -245,4 +246,4 @@ iface = gr.Interface(
 )
 
 # Launch the Gradio app
-iface.launch(share=False)
+iface.launch(share=True)

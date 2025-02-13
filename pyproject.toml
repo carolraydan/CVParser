@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "python-dotenv nest-asyncio llama-parse gradio"
+version = "0.1.0"
+description = "Cv Parser"
+authors = ["carolraydan <crr04@mail.aub.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.13"
+python-dotenv = "^1.0.1"
+nest-asyncio = "^1.6.0"
+llama-parse = "^0.5.20"
+gradio = "^5.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
